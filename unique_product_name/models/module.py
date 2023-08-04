@@ -6,10 +6,10 @@ from odoo.exceptions import ValidationError, UserError
 class Company(models.Model):
     _inherit = 'res.company'
 
-    sale_unique_product = fields.Boolean(String="Activate Unique Sale order products")
-    purchase_unique_product = fields.Boolean(String="Activate Unique purchase order products")
-    invoice_unique_product = fields.Boolean(String="Activate Unique Invoice products")
-    bill_unique_product = fields.Boolean(String="Activate Unique Bill products")
+    sale_unique_product = fields.Boolean(string="Activate Unique Sale order products")
+    purchase_unique_product = fields.Boolean(string="Activate Unique purchase order products")
+    invoice_unique_product = fields.Boolean(string="Activate Unique Invoice products")
+    bill_unique_product = fields.Boolean(string="Activate Unique Bill products")
 
 class SaleOrder(models.Model):
     _inherit = 'sale.order'
@@ -22,7 +22,7 @@ class SaleOrder(models.Model):
         else:
             self.sale_unique_product = False
 
-    sale_unique_product = fields.Boolean(default='_compute_sale_unique_product',store=True,String="Activate Unique Sale order products",readonly=False)
+    sale_unique_product = fields.Boolean(default='_compute_sale_unique_product',store=True,string="Activate Unique Sale order products",readonly=False)
 
 class SaleOrderLine(models.Model):
     _inherit = 'sale.order.line'
@@ -49,7 +49,7 @@ class PurchaseOrder(models.Model):
         else:
             self.purchase_unique_product = False
 
-    purchase_unique_product = fields.Boolean(default='_compute_purchase_unique_product',store=True,String="Activate Unique Purchase order products",readonly=False)
+    purchase_unique_product = fields.Boolean(default='_compute_purchase_unique_product',store=True,string="Activate Unique Purchase order products",readonly=False)
 
 class PurchaseOrderLine(models.Model):
     _inherit = 'purchase.order.line'
@@ -77,10 +77,10 @@ class AccountMove(models.Model):
         return self.env.company.invoice_unique_product
 
 
-    invoice_unique_product = fields.Boolean(default=compute_invoice_unique_product,store=True,String="Activate Unique Invoice products",readonly=False)
+    invoice_unique_product = fields.Boolean(default=compute_invoice_unique_product,store=True,string="Activate Unique Invoice products",readonly=False)
 
 
-    bill_unique_product = fields.Boolean(default=compute_bill_unique_product,store=True,String="Activate Unique Bill products",readonly=False)
+    bill_unique_product = fields.Boolean(default=compute_bill_unique_product,store=True,string="Activate Unique Bill products",readonly=False)
 
 
     @api.constrains('state','invoice_line_ids.product_id','invoice_unique_product','bill_unique_product','move_type')
