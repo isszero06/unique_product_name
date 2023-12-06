@@ -82,7 +82,7 @@ class AccountMove(models.Model):
     bill_unique_product = fields.Boolean(default=compute_bill_unique_product,store=True,string="Activate Unique Bill products",readonly=False)
 
 
-    @api.constrains('invoice_line_ids.product_id','invoice_unique_product','bill_unique_product','move_type')
+    @api.constrains('invoice_line_ids','invoice_unique_product','bill_unique_product','move_type')
     def _check_product_id_unique(self):
         for move in self:
             user_inv = self.env['res.users'].search([('id', '=', self.env.user.id),('groups_id', 'in', self.env.ref('unique_product_name.group_invoice_uniqe_product').id)])
