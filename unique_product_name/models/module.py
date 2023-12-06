@@ -24,7 +24,7 @@ class SaleOrder(models.Model):
 
     sale_unique_product = fields.Boolean(default='_compute_sale_unique_product',store=True,string="Activate Unique Sale order products",readonly=False)
 
-    @api.constrains('order_line.product_id','sale_unique_product')
+    @api.constrains('order_line','sale_unique_product')
     def _check_product_id_unique(self):
         for move in self:
             user_so = self.env['res.users'].search([('id', '=', self.env.user.id),('groups_id', 'in', self.env.ref('unique_product_name.group_sales_uniqe_product').id)])
@@ -50,7 +50,7 @@ class PurchaseOrder(models.Model):
 
     purchase_unique_product = fields.Boolean(default='_compute_purchase_unique_product',store=True,string="Activate Unique Purchase order products",readonly=False)
 
-    @api.constrains('order_line.product_id','purchase_unique_product')
+    @api.constrains('order_line','purchase_unique_product')
     def _check_product_id_unique(self):
         for move in self:
             user_po = self.env['res.users'].search([('id', '=', self.env.user.id),('groups_id', 'in', self.env.ref('unique_product_name.group_purchase_uniqe_product').id)])
