@@ -11,7 +11,7 @@
 
 {
     'name': 'Unique Product Name',
-    'version': '6.0.0',
+    'version': '7.0.0',
     'category': 'Sales',
     "author": 'Zero Systems',
     "company": 'Zero for Information Systems',
