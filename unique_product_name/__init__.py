@@ -1,4 +1,11 @@
-###############################################################################
-# For copyright and license notices, see __manifest__.py file in root directory
-###############################################################################
+# -*- coding: utf-8 -*-
+#################################################################################
+# Author      : Zero For Information Systems (<www.erpzero.com>)
+# Copyright(c): 2016-Zero For Information Systems
+# All Rights Reserved.
+#
+# This program is copyright property of the author mentioned above.
+# You can`t redistribute it and/or modify it.
+#
+#################################################################################
 from . import models
