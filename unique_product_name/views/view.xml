@@ -42,8 +42,8 @@
             <field name="model">account.move</field>
             <field name="arch" type="xml">
               <xpath expr="//div[@name='journal_div']" position="after">
-                <field name="bill_unique_product"  attrs="{'invisible': [('state','!=','posted'),('move_type','not in',('in_invoice','in_refund'))]}"  groups="unique_product_name.group_bill_uniqe_product"/>
-                <field name="invoice_unique_product"  attrs="{'invisible': [('state','!=','posted'),('move_type','not in',('out_invoice','out_refund'))]}"  groups="unique_product_name.group_invoice_uniqe_product"/>
+                <field name="bill_unique_product"  invisible ="[('state','!=','posted'),(move_type not in('in_invoice','in_refund'))]"  groups="unique_product_name.group_bill_uniqe_product"/>
+                <field name="invoice_unique_product"  invisible ="[('state','!=','posted'),(move_type not in('out_invoice','out_refund'))]"  groups="unique_product_name.group_invoice_uniqe_product"/>
               </xpath>
             </field>
         </record>
@@ -53,7 +53,7 @@
             <field name="model">sale.order</field>
             <field name="arch" type="xml">
               <xpath expr="//field[@name='currency_id']" position="after">
-                <field name="sale_unique_product" attrs="{'invisible': [('state','not in',('draft','cancel'))]}" groups="unique_product_name.group_sales_uniqe_product"/>
+                <field name="sale_unique_product" invisible ="[(state not in('draft','cancel'))]" groups="unique_product_name.group_sales_uniqe_product"/>
               </xpath>
             </field>
         </record>
@@ -63,7 +63,7 @@
             <field name="model">purchase.order</field>
             <field name="arch" type="xml">
              <xpath expr="//form[1]/sheet[1]/group[1]/group[1]/field[@name='currency_id']" position="after">
-                <field name="purchase_unique_product" attrs="{'invisible': [('state','not in',('draft','cancel'))]}"  groups="unique_product_name.group_purchase_uniqe_product"/>
+                <field name="purchase_unique_product" invisible ="[(state not in('draft','cancel'))]"  groups="unique_product_name.group_purchase_uniqe_product"/>
               </xpath>
             </field>
         </record>
